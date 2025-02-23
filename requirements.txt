@@ -1,0 +1,41 @@
+# 使用以下命令安装依赖（推荐使用国内镜像源）：
+# pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# LLM核心依赖
+openai>=1.0.0
+python-dotenv>=1.0.0
+tiktoken>=0.5.0
+
+# LLM开发相关
+langchain>=0.0.300
+langchain-openai>=0.0.2
+llama-index>=0.8.0
+
+# 向量数据库
+faiss-cpu>=1.7.4
+chromadb==0.4.22
+
+# 文档处理
+PyPDF2>=3.0.0
+python-docx>=0.8.11
+unstructured>=0.10.0
+
+# 数据处理
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+
+# 开发工具
+python-dotenv>=1.0.0
+tqdm>=4.65.0
+requests>=2.31.0
+rich>=13.0.0
+
+# Web开发相关
+flask>=2.0.0
+flask-sqlalchemy>=3.0.0
+flask-login>=0.6.0
+werkzeug>=2.0.0
+
+# 开发环境
+jupyter>=1.0.0
