@@ -1,6 +1,7 @@
 from langchain_openai import ChatOpenAI
 from langchain.schema import HumanMessage, SystemMessage
 from dotenv import load_dotenv
+import os
 
 """
 LangChain基础概念示例
@@ -22,8 +23,9 @@ def demonstrate_chat_model():
     """演示ChatModel的基本使用"""
     # 初始化ChatOpenAI，设置模型和温度
     chat = ChatOpenAI(
-        model_name="gpt-3.5-turbo",
-        temperature=0.7
+        model_name=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
+        temperature=0.7,
+        base_url=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
     )
 
     # 构建消息列表
@@ -69,7 +71,11 @@ def demonstrate_output_parsing():
     )
 
     # 使用ChatModel和解析器
-    chat = ChatOpenAI(temperature=0)
+    chat = ChatOpenAI(
+        temperature=0,
+        model_name=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
+        base_url=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+    )
     response = chat([HumanMessage(content=prompt.format())])
     
     # 解析输出

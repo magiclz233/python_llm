@@ -28,7 +28,11 @@ def demonstrate_basic_chain():
     )
 
     # 初始化语言模型
-    llm = ChatOpenAI(temperature=0.7)
+    llm = ChatOpenAI(
+        model_name=os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
+        temperature=0.7,
+        base_url=os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+        )
 
     # 创建chain
     chain = LLMChain(llm=llm, prompt=prompt)
