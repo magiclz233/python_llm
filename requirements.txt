@@ -36,6 +36,9 @@ flask>=2.0.0
 flask-sqlalchemy>=3.0.0
 flask-login>=0.6.0
 werkzeug>=2.0.0
+fastapi>=0.100.0
+uvicorn>=0.20.0
+sqlalchemy>=2.0.0
 
 # 开发环境
 jupyter>=1.0.0
