@@ -24,6 +24,20 @@ def read_item(item_id: int, db: Session = Depends(database.get_db)):
         return {"id": item.id, "name": item.name}
     return {"message": "Item not found"}
 
+@app.post("/items/{item_id}")
+def set_item(item_id: int, item_name: str, db: Session = Depends(database.get_db)):
+    try:
+        # 将数据存入数据库
+        item = database.Item(id=item_id, name=item_name)
+        db.add(item)
+        db.commit()
+        # 将数据存入缓存
+        cache.set_in_cache(f"item:{item_id}", item_name)
+        return {"id": item.id, "name": item.name}
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(status_code=500, detail=str(e))
+    
 # 启动应用
 if __name__ == "__main__":
     import uvicorn
